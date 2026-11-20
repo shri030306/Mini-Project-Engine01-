@@ -299,3 +299,99 @@ SELECT * FROM vw_category_summary;
 
 -- View Audit Log
 SELECT * FROM tourist_places_audit_log ORDER BY performed_at DESC;
+
+
+-- #######################################################################################
+-- PART 3: [DAY 3 TASK] - ADVANCED DATA QUERIES, FILTERING & REPORTING VIEWS (DQL)
+-- Focus: Multi-table joins, multi-criteria search, aggregations & budget views
+-- #######################################################################################
+
+USE tourist_db1;
+
+-- ---------------------------------------------------------------------------------------
+-- TASK 3.1: MULTI-TABLE INNER JOIN
+-- Combines destinations with their category name instead of numeric ID
+-- ---------------------------------------------------------------------------------------
+SELECT 
+    p.place_name, 
+    p.city, 
+    c.category_name, 
+    p.entry_fee, 
+    p.rating
+FROM tourist_places p
+JOIN categories1 c ON p.category_id = c.category_id
+ORDER BY p.city;
+
+-- ---------------------------------------------------------------------------------------
+-- TASK 3.2: MULTI-CONDITION BUDGET & RATING FILTER
+-- Search destinations with entry fee <= 30.00 AND rating >= 4.50
+-- ---------------------------------------------------------------------------------------
+SELECT 
+    place_name, 
+    city, 
+    entry_fee, 
+    rating, 
+    best_time_to_visit
+FROM tourist_places
+WHERE entry_fee <= 30.00 AND rating >= 4.50
+ORDER BY rating DESC;
+
+-- ---------------------------------------------------------------------------------------
+-- TASK 3.3: CATEGORY-WISE AGGREGATIONS (MIS SUMMARY)
+-- Computes total destinations, average rating, and max fee per category
+-- ---------------------------------------------------------------------------------------
+SELECT 
+    c.category_name,
+    COUNT(p.place_id) AS total_places,
+    ROUND(AVG(p.rating), 2) AS average_rating,
+    MAX(p.entry_fee) AS max_entry_fee
+FROM categories1 c
+LEFT JOIN tourist_places p ON c.category_id = p.category_id
+GROUP BY c.category_id, c.category_name;
+
+-- ---------------------------------------------------------------------------------------
+-- TASK 3.4: PATTERN MATCHING SEARCH (LIKE OPERATOR)
+-- Search destinations containing 'Falls' or 'Temple' in their name
+-- ---------------------------------------------------------------------------------------
+SELECT 
+    place_name, 
+    city, 
+    entry_fee, 
+    rating
+FROM tourist_places
+WHERE place_name LIKE '%Falls%' OR place_name LIKE '%Temple%'
+ORDER BY place_name;
+
+-- ---------------------------------------------------------------------------------------
+-- TASK 3.5: TOP 5 POPULAR DESTINATIONS (ORDER BY & LIMIT)
+-- Retrieves the top 5 highest popularity destinations
+-- ---------------------------------------------------------------------------------------
+SELECT 
+    place_name, 
+    city, 
+    rating, 
+    popularity, 
+    best_time_to_visit
+FROM tourist_places
+ORDER BY popularity DESC
+LIMIT 5;
+
+-- ---------------------------------------------------------------------------------------
+-- TASK 3.6: CREATE A REUSABLE BUDGET-FRIENDLY VIEW
+-- A persistent view for public search showing affordable attractions
+-- ---------------------------------------------------------------------------------------
+CREATE OR REPLACE VIEW vw_budget_friendly_places AS
+SELECT 
+    place_id,
+    place_name,
+    city,
+    entry_fee,
+    rating,
+    best_time_to_visit
+FROM tourist_places
+WHERE entry_fee <= 25.00 AND status = 'ACTIVE';
+
+-- Verify the new view
+SELECT * FROM vw_budget_friendly_places;
+
+
