@@ -1,4 +1,4 @@
-# SHEETS FOR THEME 2 / THEME 3 — SEARCH AND RANKING SYSTEM
+# SHEETS FOR THEME 2 / THEME 2 — SEARCH AND RANKING SYSTEM
 ## Gate 1 — Requirements Baseline (10 marks) | Stage: S1
 
 | Division | E | Team No. | 02 | Date | 20-11-2026 |

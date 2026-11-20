@@ -1,8 +1,8 @@
 -- =======================================================================================
 -- KLE TECHNOLOGICAL UNIVERSITY, HUBBALLI
 -- DEPARTMENT OF BACHELOR OF COMPUTER APPLICATIONS
--- THEME 4: REPORTING AND MIS SYSTEM / RULES CHECK RECORDS REGISTER
--- MASTER DATABASE SCRIPT: DAY 1 BASELINE + DAY 2 SCHEMA EVOLUTION + DAY 3 DQL + ENGINE ALIGNMENT
+-- THEME 2: SEARCH AND RANKING SYSTEM
+-- MASTER PRODUCTION DATABASE SCRIPT (34 KARNATAKA DESTINATIONS + AUDIT REGISTERS)
 -- Project: Tourist Place Search and Ranking System
 -- Engine 1: Data & Integrity (Database Management Systems)
 -- Student: Shrilakshmi G.S (USN: 01FE24BCA314)
@@ -12,13 +12,18 @@
 -- Repository: https://github.com/shri030306/Mini-Project-Engine01-
 -- =======================================================================================
 
+-- =======================================================================================
+-- EXECUTION NOTICE FOR DEVELOPERS & FACULTY:
+-- THIS IS THE ALL-IN-ONE MASTER SCRIPT. 
+-- Running this single file sets up the complete, latest database schema, seeds all 34 places,
+-- configures normalized ranking weights, installs audit triggers, and creates all reporting views.
+-- =======================================================================================
+
 -- #######################################################################################
--- PART 1: [DAY 1 TASK] - INITIAL DATABASE, ALIGNED CONSTRAINTS & CONFIG TABLES
+-- PART 1: SAFE INITIALIZATION & RELATIONAL SCHEMA
 -- #######################################################################################
 
--- STEP 1: SAFE INITIALIZATION (NON-DESTRUCTIVE SAFE RUN)
--- Does NOT wipe team data if re-run. Uncomment the DROP line only if a clean reset is needed.
--- DROP DATABASE IF EXISTS tourist_db1;
+-- STEP 1: SAFE DATABASE CREATION (Non-destructive safe re-run)
 CREATE DATABASE IF NOT EXISTS tourist_db1;
 USE tourist_db1;
 
@@ -28,30 +33,34 @@ CREATE TABLE IF NOT EXISTS categories1 (
     category_name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- STEP 3: CREATE RANKING CONFIGURATION TABLE (ENGINE 2 C++ WEIGHTS ALIGNMENT)
--- Holds dynamic weights for Engine 2 composite ranking formula:
--- Score = 100 * (0.35*rating + 0.15*popularity + 0.20*distance + 0.15*cost + 0.15*preference)
+-- STEP 3: CREATE RANKING CONFIGURATION TABLE (ENGINE 2 WEIGHTS ALIGNMENT)
+-- Holds dynamic weights for Engine 2 composite ranking formula.
+-- Enforces:
+-- 1. All weights must be non-negative (>= 0)
+-- 2. All weights MUST sum to exactly 1.00 (ROUND sum = 1.00)
 CREATE TABLE IF NOT EXISTS ranking_config (
     config_id INT AUTO_INCREMENT PRIMARY KEY,
-    config_name VARCHAR(50) NOT NULL UNIQUE DEFAULT 'DEFAULT_WEIGHTS',
+    config_name VARCHAR(50) NOT NULL UNIQUE,
     weight_rating DECIMAL(3,2) NOT NULL DEFAULT 0.35,
-    weight_popularity DECIMAL(3,2) NOT NULL DEFAULT 0.15,
-    weight_distance DECIMAL(3,2) NOT NULL DEFAULT 0.20,
+    weight_popularity DECIMAL(3,2) NOT NULL DEFAULT 0.25,
+    weight_distance DECIMAL(3,2) NOT NULL DEFAULT 0.25,
     weight_cost DECIMAL(3,2) NOT NULL DEFAULT 0.15,
-    weight_preference DECIMAL(3,2) NOT NULL DEFAULT 0.15,
+    weight_preference DECIMAL(3,2) NOT NULL DEFAULT 0.00,
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CHECK (weight_rating >= 0 AND weight_popularity >= 0 AND weight_distance >= 0 AND weight_cost >= 0 AND weight_preference >= 0)
+    CHECK (weight_rating >= 0 AND weight_popularity >= 0 AND weight_distance >= 0 AND weight_cost >= 0 AND weight_preference >= 0),
+    CHECK (ROUND(weight_rating + weight_popularity + weight_distance + weight_cost + weight_preference, 2) = 1.00)
 );
 
--- Seed Default Dynamic Ranking Weights for C++ Engine
+-- Seed Default Dynamic Ranking Weights (Sum = 1.00)
 INSERT IGNORE INTO ranking_config 
-(config_id, config_name, weight_rating, weight_popularity, weight_distance, weight_cost, weight_preference)
+(config_id, config_name, weight_rating, weight_popularity, weight_distance, weight_cost, weight_preference, is_active)
 VALUES 
-(1, 'DEFAULT_WEIGHTS', 0.35, 0.15, 0.20, 0.15, 0.15);
+(1, 'DEFAULT_4_FACTOR', 0.35, 0.25, 0.25, 0.15, 0.00, TRUE),
+(2, 'EXTENDED_5_FACTOR', 0.30, 0.20, 0.20, 0.15, 0.15, FALSE);
 
 -- STEP 4: CREATE TOURIST PLACES TABLE (CORE RECORDS REGISTER)
--- Enforces Non-Violable Rules aligned with Engine 2 (C++) and Node API:
+-- Enforces Non-Violable Integrity Rules aligned with Engine 2 (C++) and Node API:
 -- 1. Foreign Key rejects orphan records
 -- 2. UNIQUE constraint prevents duplicate destinations within the same city
 -- 3. CHECK (rating BETWEEN 1.00 AND 5.00) matches C++ 1-5 rating expectations
@@ -73,10 +82,7 @@ CREATE TABLE IF NOT EXISTS tourist_places (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    -- Referential Integrity
     FOREIGN KEY (category_id) REFERENCES categories1(category_id),
-
-    -- Domain & Business Rules Integrity
     CONSTRAINT uq_place_city UNIQUE (place_name, city),
     CHECK (entry_fee >= 0),
     CHECK (distance_km >= 0),
@@ -136,10 +142,10 @@ VALUES
 
 
 -- #######################################################################################
--- PART 2: [DAY 2 TASK] - AUDIT TRAIL REGISTER & MIS REPORTING VIEWS
+-- PART 2: AUDIT TRAIL REGISTER & MIS REPORTING VIEWS
 -- #######################################################################################
 
--- STEP 7: CREATE AUDIT TRAIL REGISTER TABLE (THEME 4 COMPLIANCE)
+-- STEP 7: CREATE AUDIT TRAIL REGISTER TABLE (THEME 2 / MIS COMPLIANCE)
 CREATE TABLE IF NOT EXISTS tourist_places_audit_log (
     audit_id INT AUTO_INCREMENT PRIMARY KEY,
     place_id INT NOT NULL,
@@ -207,14 +213,13 @@ GROUP BY c.category_id, c.category_name;
 
 
 -- #######################################################################################
--- PART 3: [DAY 3 TASK] - ADVANCED DATA QUERIES, FILTERING & REPORTING VIEWS (DQL)
+-- PART 3: ADVANCED DATA QUERIES, FILTERING & REPORTING VIEWS (DQL)
 -- Focus: Multi-table joins, multi-criteria search, aggregations & budget views
 -- #######################################################################################
 
 USE tourist_db1;
 
 -- TASK 3.1: MULTI-TABLE INNER JOIN
--- Combines all 34 destinations with their category name
 SELECT 
     p.place_name, 
     p.city, 
@@ -227,7 +232,6 @@ JOIN categories1 c ON p.category_id = c.category_id
 ORDER BY p.city;
 
 -- TASK 3.2: MULTI-CONDITION BUDGET & RATING FILTER
--- Search destinations with entry fee <= 30.00 AND rating >= 4.50
 SELECT 
     place_name, 
     city, 
@@ -239,7 +243,6 @@ WHERE entry_fee <= 30.00 AND rating >= 4.50
 ORDER BY rating DESC;
 
 -- TASK 3.3: CATEGORY-WISE AGGREGATIONS (MIS SUMMARY)
--- Computes total destinations, average rating, and max fee per category across all 34 spots
 SELECT 
     c.category_name,
     COUNT(p.place_id) AS total_places,
@@ -250,7 +253,6 @@ LEFT JOIN tourist_places p ON c.category_id = p.category_id
 GROUP BY c.category_id, c.category_name;
 
 -- TASK 3.4: PATTERN MATCHING SEARCH (LIKE OPERATOR)
--- Search destinations containing 'Falls' or 'Temple' in their name
 SELECT 
     place_name, 
     city, 
@@ -261,7 +263,6 @@ WHERE place_name LIKE '%Falls%' OR place_name LIKE '%Temple%'
 ORDER BY place_name;
 
 -- TASK 3.5: TOP 5 POPULAR DESTINATIONS (ORDER BY & LIMIT)
--- Retrieves the top 5 highest popularity destinations across Karnataka
 SELECT 
     place_name, 
     city, 
@@ -273,7 +274,6 @@ ORDER BY popularity DESC
 LIMIT 5;
 
 -- TASK 3.6: CREATE A REUSABLE BUDGET-FRIENDLY VIEW
--- A persistent view for public search showing affordable attractions
 CREATE OR REPLACE VIEW vw_budget_friendly_places AS
 SELECT 
     place_id,

@@ -3,7 +3,7 @@
 ## Project
 Tourist Place Search and Ranking System (Engine 1: Data & Integrity)  
 **Student:** Shrilakshmi G.S (USN: `01FE24BCA314`)  
-**Theme:** Theme 4 — Reporting and MIS System / Rules Check Records Register  
+**Theme:** Theme 2 — Search and Ranking System  
 
 ---
 

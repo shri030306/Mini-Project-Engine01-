@@ -45,5 +45,5 @@ The database was tested for table creation, primary keys, foreign key cascading,
 
 ## 4. Conclusion
 
-All 10 integrity constraints and 4 trigger audit operations successfully passed verification, confirming full compliance with Theme 4 database requirements.
+All 10 integrity constraints and 4 trigger audit operations successfully passed verification, confirming full compliance with Theme 2 database requirements.
 

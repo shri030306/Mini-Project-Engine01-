@@ -33,7 +33,7 @@ Stores core destination records, entrance fees, ratings, distance, and operation
 - `updated_at` (TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
 
 ### 3. `tourist_places_audit_log`
-Immutable audit register tracking every insertion and update for Theme 4 compliance.
+Immutable audit register tracking every insertion and update for Theme 2 compliance.
 - `audit_id` (INT, Primary Key, Auto Increment)
 - `place_id` (INT, NOT NULL)
 - `action_type` (VARCHAR(20), NOT NULL) – `INSERT_RECORD`, `UPDATE_ENTRY_FEE`, `UPDATE_RATING`, `STATUS_CHANGE`

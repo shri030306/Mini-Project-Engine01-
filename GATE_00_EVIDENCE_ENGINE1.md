@@ -1,4 +1,5 @@
-# SHEETS FOR THEME 3 — SEARCH AND RANKING SYSTEM
+
+# SHEETS FOR THEME 2 — SEARCH AND RANKING SYSTEM
 ## Gate 0 — Problem Approval (5 marks) | Stage: S0
 
 | Division | E | Team No. | 02 | Date | 20-11-2026 |
