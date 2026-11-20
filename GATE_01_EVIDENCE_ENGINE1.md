@@ -6,7 +6,7 @@
 **Project Title:** Tourist Place Search and Ranking System  
 **Engine 1 (Data & Integrity):** Shrilakshmi G.S (USN: `01FE24BCA314`)  
 **Faculty Mentors:** Prof. Pavankumar Vadavi, Prof. Sayeeda Anjum  
-**Repository:** [https://github.com/shri030306/Mini-project-.git](https://github.com/shri030306/Mini-project-.git)
+**Repository:** [https://github.com/shri030306/Mini-Project-Engine01-](https://github.com/shri030306/Mini-Project-Engine01-)
 
 ---
 
