@@ -1,0 +1,35 @@
+place_id,place_name,city,state,category_id,entry_fee,distance_km,rating,popularity,description,best_time_to_visit,status
+1,Unkal Lake & Park,Hubballi,Karnataka,3,10.0,6.0,4.3,82,"Scenic urban lake with boating, garden walkways, and a statue of Swami Vivekananda.",July to October (Monsoon),ACTIVE
+2,Chandramouleshwara Temple,Hubballi,Karnataka,4,0.0,8.5,4.5,78,Chalukya-era 900-year-old carved black stone temple dedicated to Lord Shiva.,October to March,ACTIVE
+3,Nrupatunga Betta Viewpoint,Hubballi,Karnataka,3,20.0,10.0,4.4,80,Elevated scenic hill park offering panoramic sunset views over the twin cities.,October to March,ACTIVE
+4,Sadhankeri Park & Lake,Dharwad,Karnataka,3,10.0,22.0,4.2,72,Peaceful lakeside park and musical fountain commemorating poet Da Ra Bendre.,October to March,ACTIVE
+5,Gokarna Om Beach,Gokarna,Karnataka,1,0.0,150.0,4.6,92,"Famous Om-shaped shoreline with golden sand, rocky coves, and ocean waves.",November to February (Winter),ACTIVE
+6,Murudeshwar Temple & Beach,Murudeshwar,Karnataka,4,0.0,185.0,4.7,95,Colossal 123-foot Shiva statue perched on Kanduka Hill over the Arabian Sea.,October to March,ACTIVE
+7,Jog Falls Viewpoint,Shivamogga,Karnataka,3,50.0,160.0,4.7,93,Second highest plunge waterfall in India where the Sharavathi river cascades.,July to October (Monsoon),ACTIVE
+8,Virupaksha Temple & Hampi,Hampi,Karnataka,2,50.0,165.0,4.9,98,UNESCO World Heritage monument showcasing Vijayanagara stone architecture.,October to March,ACTIVE
+9,Badami Cave Temples,Badami,Karnataka,2,30.0,105.0,4.7,91,Four rock-cut sandstone cave shrines overlooking ancient Agastya Lake.,October to March,ACTIVE
+10,Mysore Palace,Mysuru,Karnataka,2,100.0,410.0,4.9,98,Magnificent Indo-Saracenic royal palace renowned for illuminated night facades.,October to March,ACTIVE
+11,Dandeli River Rafting,Dandeli,Karnataka,5,250.0,74.0,4.6,94,Whitewater rafting and wildlife safari amidst the dense Kali River forests.,October to May,ACTIVE
+12,Mullayanagiri Peak,Chikkamagaluru,Karnataka,6,0.0,275.0,4.8,96,Highest peak in Karnataka offering mist-covered mountain trekking trails.,September to March,ACTIVE
+13,Kudle Beach,Gokarna,Karnataka,1,0.0,152.0,4.5,88,Scenic coastal stretch ideal for sunsets and relaxed beachside cafes.,November to February (Winter),ACTIVE
+14,Yana Rocks & Caves,Kumta,Karnataka,3,20.0,140.0,4.6,85,Gigantic crystalline limestone rock formations surrounded by thick rainforest.,October to March,ACTIVE
+15,Sathodi Falls,Yellapur,Karnataka,3,30.0,75.0,4.5,81,A picturesque rectangular forest waterfall formed by multiple tributaries.,July to October (Monsoon),ACTIVE
+16,Magod Falls,Yellapur,Karnataka,3,20.0,80.0,4.3,76,Bedthi river tumbling down two tiers amidst dense Western Ghats valleys.,July to October (Monsoon),ACTIVE
+17,Sirsi Marikamba Temple,Sirsi,Karnataka,4,0.0,102.0,4.8,89,Renowned 16th-century historic temple adorned with traditional wooden carvings.,October to March,ACTIVE
+18,Pattadakal UNESCO Monuments,Pattadakal,Karnataka,2,40.0,128.0,4.8,90,UNESCO World Heritage cluster of 8th-century Rekha-Nagara and Dravidian temples.,October to March,ACTIVE
+19,Aihole Historical Complex,Aihole,Karnataka,2,30.0,135.0,4.5,84,Known as the cradle of Hindu rock and structural temple architecture.,October to March,ACTIVE
+20,Gol Gumbaz,Vijayapura,Karnataka,2,25.0,200.0,4.6,87,Massive domed mausoleum famous for its acoustical Whispering Gallery.,October to March,ACTIVE
+21,Chitradurga Fort,Chitradurga,Karnataka,2,25.0,205.0,4.7,89,Impenetrable medieval stone fortress featuring seven circular walls and 19 gateways.,October to March,ACTIVE
+22,Agumbe Sunset Point,Shivamogga,Karnataka,6,0.0,240.0,4.5,85,High Ghats viewpoint famous for panoramic sunset views over the Arabian Sea.,October to March,ACTIVE
+23,Abbey Falls,Madikeri,Karnataka,3,15.0,360.0,4.4,86,Cascading waterfall amidst spice estates and coffee plantations in Coorg.,July to November,ACTIVE
+24,Raja Seat Viewpoint,Madikeri,Karnataka,6,10.0,358.0,4.5,88,Historic garden viewpoint where Kodagu kings enjoyed seasonal sunsets.,October to March,ACTIVE
+25,Nagarhole National Park,Kodagu,Karnataka,5,300.0,420.0,4.7,94,"Dense Nilgiri biosphere reserve rich in tigers, elephants, and leopards.",October to May,ACTIVE
+26,Bandipur Tiger Reserve,Chamarajanagar,Karnataka,5,350.0,470.0,4.8,97,Premier Project Tiger sanctuary with guided jungle safaris and open grasslands.,October to May,ACTIVE
+27,Bannerghatta Biological Park,Bengaluru,Karnataka,5,150.0,415.0,4.4,91,"Expansive zoological park, butterfly house, and lion/tiger rescue center.",Year Round,ACTIVE
+28,Lalbagh Botanical Garden,Bengaluru,Karnataka,3,30.0,412.0,4.6,93,Historic 240-acre botanical reserve with iconic Glass House and ancient rock.,Year Round,ACTIVE
+29,Belur Chennakeshava Temple,Belur,Karnataka,2,0.0,290.0,4.8,92,Masterpiece of 12th-century Hoysala architecture with intricate star-shaped friezes.,October to March,ACTIVE
+30,Halebidu Hoysaleshwara Temple,Halebidu,Karnataka,2,0.0,285.0,4.7,90,Twin Shiva temples renowned for detailed stone reliefs and ornamental pillars.,October to March,ACTIVE
+31,Shravanabelagola Gommateshwara,Hassan,Karnataka,4,0.0,345.0,4.8,93,World famous 57-foot monolithic granite statue of Lord Bahubali atop Vindhyagiri.,October to March,ACTIVE
+32,Panambur Beach,Mangaluru,Karnataka,1,0.0,330.0,4.4,87,"Popular coastal beach known for clean shores, kite festivals, and water sports.",November to February (Winter),ACTIVE
+33,Tannirbhavi Beach,Mangaluru,Karnataka,1,0.0,335.0,4.5,85,"Tranquil beach with casuarina groves, ferry access, and sunset promenades.",November to February (Winter),ACTIVE
+34,Kudremukh National Park,Chikkamagaluru,Karnataka,6,50.0,310.0,4.7,91,Horse-face shaped peak known for rolling shola grasslands and bio-diverse valleys.,September to February,ACTIVE
