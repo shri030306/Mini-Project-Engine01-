@@ -1,51 +1,33 @@
-# KLE TECHNOLOGICAL UNIVERSITY, HUBBALLI
-## DEPARTMENT OF BACHELOR OF COMPUTER APPLICATIONS
-### THEME 4: REPORTING AND MIS SYSTEM / RULES CHECK RECORDS REGISTER
-### GATE 0: PROBLEM APPROVAL EVALUATION EVIDENCE (5 MARKS)
-**Stage:** S0 | **Division:** E | **Team:** Team 02 | **Date:** 20-11-2026  
-**Project Title:** Tourist Place Search and Ranking System  
-**Engine 1 (Data & Integrity):** Shrilakshmi G.S (USN: `01FE24BCA314`)  
-**Faculty Mentors:** Prof. Pavankumar Vadavi, Prof. Sayeeda Anjum  
-**Repository:** [https://github.com/shri030306/Mini-Project-Engine01-](https://github.com/shri030306/Mini-Project-Engine01-)
+# SHEETS FOR THEME 3 — SEARCH AND RANKING SYSTEM
+## Gate 0 — Problem Approval (5 marks) | Stage: S0
+
+| Division | E | Team No. | 02 | Date | 20-11-2026 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Project title** | **Tourist Place Search and Ranking System** |
+| **Member 1** | Shrilakshmi (01fe24bca314) | **Member 2** | — | **Member 3** | — | **Member 4** | — |
+| **Engine 1** | Data and Integrity | **Engine 2** | — | **Engine 3** | — | **Engine 4** | — |
+| **Faculty mentor** | Prof. Pavan Vadavi, Prof. Sayeda Anjum |
 
 ---
 
-## 1. Team & Engine Architecture Mapping
+### Evidence Verification Matrix
 
-| Engine | Technical Focus Area | Team Member | USN | Core Deliverable |
-| :--- | :--- | :--- | :--- | :--- |
-| **Engine 1** | **Data & Integrity** | **Shrilakshmi G.S** | **01FE24BCA314** | **MySQL relational schema, CHECK constraints, audit triggers, 22+ Karnataka records, MIS views** |
-| Engine 2 | Logic & Algorithms | Vivek B M | 01FE24BCA266 | C++ multi-criteria ranking algorithm, heap sort, scoring pipeline |
-| Engine 3 | Interface & Web | Gouri K | 01FE24BCA312 | Web UI, responsive filter controls, REST client presentation |
-| Engine 4 | Testing & SDLC | Team 02 | — | Requirements traceability matrix (RTM), acceptance testing suite |
-
----
-
-## 2. Gate 0 Rubric Evaluation Matrix (Theme 4: Reporting and MIS System)
-
-| # | Evidence to be produced | CO | Student Y/P/N | Student — where the evidence is (GitHub Repository Links & Artifacts) |
-| :-: | :--- | :-: | :-: | :--- |
-| **A1** | **Problem statement with stakeholders named (who is affected, and how)** | CO1 | **Y** | • [Project Synopsis](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/Team02_Tourist_Place_Search_and_Ranking_System_Synopsis%20(1).docx) – Problem Statement & Stakeholder Analysis (Tourists, Tourism Dept, Curators)<br>• [gate_0_database.sql](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/gate_0_database.sql) – SQL schema, non-violable constraints, prototype destinations<br>• [DATABASE_TESTING_REPORT.md](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/documentation/DATABASE_TESTING_REPORT.md) – Constraint verification test suite<br>• [GATE_00_EVIDENCE_ENGINE1.md](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/GATE_00_EVIDENCE_ENGINE1.md) – Gate 0 evidence summary |
-| **A2** | **AS-IS workflow and TO-BE workflow drawn** | CO1 | **Y** | • [diagrams Folder](https://github.com/shri030306/Mini-Project-Engine01-/tree/main/diagrams) – Workflow architecture directory<br>• [AS_IS_Workflow.md](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/diagrams/AS_IS_Workflow.md) – Existing manual search process and unverified pain points<br>• [TO_BE_Workflow.md](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/diagrams/TO_BE_Workflow.md) – Proposed MIS automated multi-criteria ranking workflow |
-| **A3** | **Scope and out-of-scope list; feasibility and risk note** | CO1 | **Y** | • [Project SRS](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/Team02_Tourist_place_search_and%20_ranking_SRS.docx) – Scope, Out-of-Scope boundaries, feasibility matrix and risk assessment<br>• [Project Synopsis](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/Team02_Tourist_Place_Search_and_Ranking_System_Synopsis%20(1).docx) – High-level project charter<br>• [documentation Folder](https://github.com/shri030306/Mini-Project-Engine01-/tree/main/documentation) – Engineering specification and testing notes<br>• [gate_0_database.sql](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/gate_0_database.sql) – Database implementation |
-| **A4** | **Integration Map v1 — which of the five course areas will appear, and where** | CO1 | **Y** | • [Requirement Analysis](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/Team02_Tourist_Place_Search_and_Ranking_System_Requirement_Analysis%20(1).docx) – Section 4: Foundational Course Mapping<br>• [DATABASE_DOCUMENTATION.md](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/documentation/DATABASE_DOCUMENTATION.md) – Architectural integration of DBMS, Data Structures/Algorithms (C++), Web Technologies, and Software Engineering |
-| **B1** | **THEME-SPECIFIC: What currently cannot be proved is named — a disputed balance, a mismatch, or an item nobody can trace** | CO1 | **Y** | • [B1_Limitation_Note.md](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/documentation/B1_Limitation_Note.md) – **Identified Limitation:** In traditional travel platforms, destination entry fee revisions and visitor ratings have zero audit history; when fees change during peak seasons, administrators cannot prove prior authorized fees or who changed them, creating untraceable pricing disputes at ticket counters.<br>• [gate_0_database.sql (Step 9)](https://github.com/shri030306/Mini-Project-Engine01-/blob/main/gate_0_database.sql#L115-L140) – Step 9 Gate 0 Theme 4 unprovable dispute demonstration transaction |
+| # | Evidence to be produced | CO | Student Y / P / N | Student — where the evidence is | Faculty Y / P / N | Marks | Max |
+| :-: | :--- | :-: | :-: | :--- | :-: | :-: | :-: |
+| **A1** | **Problem statement with stakeholders named (who is affected, and how)** | CO1 | **Y** | **Repository:** https://github.com/shri030306/Mini-Project-Engine01-/blob/main/Team02_Tourist_Place_Search_and_Ranking_System_Synopsis%20(1).docx<br>• Identifies three core stakeholders: travelers struggling with fragmented information, travel curators needing objective rankings, and tourism administrators lacking centralized registers.<br>• Formulates the core problem statement addressing unverified entrance fees, unstandardized ratings, and lack of distance transparency from regional origins. | | | **1.0** |
+| **A2** | **AS-IS workflow and TO-BE workflow drawn** | CO1 | **Y** | **Repository:** https://github.com/shri030306/Mini-Project-Engine01-/tree/main/diagrams<br>• AS-IS workflow illustrates the current manual, fragmented search process leading to unverified fee discrepancies and untraceable travel decisions.<br>• TO-BE workflow defines the proposed automated MIS architecture where user preferences trigger database filtering, C++ ranking logic, and verified UI display. | | | **1.0** |
+| **A3** | **Scope and out-of-scope list; feasibility and risk note** | CO1 | **Y** | **Repository:** https://github.com/shri030306/Mini-Project-Engine01-/blob/main/Team02_Tourist_place_search_and%20_ranking_SRS.docx<br>• Explicitly scopes 34 verified Karnataka destinations across 6 categories while setting direct hotel booking and live turn-by-turn navigation out of scope.<br>• Documents technical feasibility using MySQL InnoDB with relational integrity constraints and provides a risk analysis on seasonal fee volatility. | | | **1.0** |
+| **A4** | **Integration Map v1 — which of the five course areas will appear, and where** | CO1 | **Y** | **Repository:** https://github.com/shri030306/Mini-Project-Engine01-/blob/main/Team02_Tourist_Place_Search_and_Ranking_System_Requirement_Analysis%20(1).docx<br>• Maps 5 foundational course areas across engines: DBMS (Engine 1 data integrity), DSA (Engine 2 heap sorting & ranking), and Web Technologies (Engine 3 UI).<br>• Establishes Software Engineering SDLC traceability and Systems Programming IPC data exchange between database and ranking modules. | | | **1.0** |
+| **B1** | **THEME-SPECIFIC EVIDENCE: What currently cannot be proved is named — a disputed balance, a mismatch, or an item nobody can trace** | CO1 | **Y** | **Repository:** https://github.com/shri030306/Mini-Project-Engine01-/blob/main/documentation/B1_Limitation_Note.md<br>• Identifies the unprovable flaw where traditional travel blogs revise entry fees and ratings without any audit logging, creating ticket-counter pricing disputes.<br>• Demonstrates in `gate_0_database.sql` (Step 9) how updates without an audit trail leave administrators unable to trace who changed a fee or prove prior rates. | | | **1.0** |
+| | **TOTAL** | | | | | | **5.0** |
 
 ---
 
-## 3. Mandatory Gate 0 Review Statements
+### Review Statements
 
-### Student’s Own Statement — The One Thing We Know is Weakest in This Gate
-> *"The weakest part of our project formulation is that frontend and backend integration and distance origin normalization are still pending. In Gate 1, we anchor reference distances to Hubballi (KLE Tech campus), connect Engine 1 with Engine 2, and verify full end-to-end ranking functionality."*
-
-### Faculty Question Asked at Decision Level, and the Answer Given
-- **Question:** *"Why does a Tourist Place Search and Ranking system belong under Theme 4 (Reporting and MIS System), and what specific unprovable mismatch does it solve?"*
-- **Answer:** *"It belongs under Theme 4 because it acts as an administrative Records Register and Decision-Support MIS. In traditional travel blogs and unverified websites, fee revisions and visitor ratings are ad-hoc and untraceable; our MIS system enforces non-violable data rules (preventing negative fees and duplicate records) and maintains an automated audit log registering every operational transaction with historical old-vs-new tracking."*
-
-### One Sentence the Team Must Act on Before the Next Gate
-> *"Complete the relational schema lock with Engine 2, implement automated audit triggers in database_queries.sql, and test all integrity constraints using valid and invalid test cases before presenting Gate 1."*
-
-### Gate Decision
-- **Status:** **CLEARED** (5.0 / 5.0)  
-- **Student Sign:** Shrilakshmi G.S (`01FE24BCA314`)  
-- **Mentor Sign:** Prof. Pavankumar Vadavi / Prof. Sayeeda Anjum
+| Item | Details |
+| :--- | :--- |
+| **Student’s own statement — the one thing we know is weakest in this gate** | The weakest part of our project in Gate 0 is that distance calculations lacked a standardized geographic origin. In Gate 1, we anchor all destination distances to Hubballi (KLE Tech campus) as the central regional origin coordinate. |
+| **Faculty question asked at Decision level, and the answer given** | |
+| **One sentence the team must act on before the next gate** | Complete the relational schema lock with Engine 2, implement automated audit triggers in database_queries.sql, and test all integrity constraints using valid and invalid test cases before presenting Gate 1. |
+| **GATE DECISION** | **CLEARED** &nbsp;&nbsp;/&nbsp;&nbsp; **HELD** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Student sign:** Shrilakshmi G.S &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Mentor sign:** ____________________ |
