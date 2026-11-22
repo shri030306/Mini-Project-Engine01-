@@ -2,7 +2,7 @@
 -- KLE TECHNOLOGICAL UNIVERSITY, HUBBALLI
 -- DEPARTMENT OF BACHELOR OF COMPUTER APPLICATIONS
 -- THEME 2: SEARCH AND RANKING SYSTEM
--- MASTER PRODUCTION DATABASE SCRIPT (34 KARNATAKA DESTINATIONS + AUDIT REGISTERS)
+-- MASTER PRODUCTION DATABASE SCRIPT (34 KARNATAKA DESTINATIONS + AUDIT + ITINERARIES)
 -- Project  : Tourist Place Search and Ranking System
 -- Engine 1 : Data & Integrity (Database Management Systems)
 -- Student  : Shrilakshmi G.S  |  USN: 01FE24BCA314  |  Team 02  |  Division E
@@ -13,8 +13,8 @@
 -- =======================================================================================
 -- HOW TO RUN:
 --   Open this file in MySQL Workbench → Click the LIGHTNING BOLT (⚡) to run ALL.
---   This is the ONLY script you need. Do NOT run day_2_database_alter_queries.sql
---   separately on a fresh database — this master script already includes everything.
+--   This single master script drops old tables in safe order and sets up the complete
+--   schema (6 tables, 4 views, 2 triggers, 34 places, 4 curated itineraries).
 -- =======================================================================================
 
 -- #######################################################################################
@@ -25,8 +25,9 @@
 CREATE DATABASE IF NOT EXISTS tourist_db1;
 USE tourist_db1;
 
--- STEP 2: DROP OLD TABLES IN CORRECT ORDER (child tables first, then parent)
---         This fixes the Error 1054 (unknown column 'state') from old incomplete tables
+-- STEP 2: DROP OLD TABLES IN CORRECT ORDER (child tables first, then parent tables)
+DROP TABLE IF EXISTS itinerary_places;
+DROP TABLE IF EXISTS itineraries;
 DROP TABLE IF EXISTS tourist_places_audit_log;
 DROP TABLE IF EXISTS tourist_places;
 DROP TABLE IF EXISTS ranking_config;
@@ -57,7 +58,7 @@ CREATE TABLE ranking_config (
     CHECK (ROUND(weight_rating + weight_popularity + weight_distance + weight_cost + weight_preference, 2) = 1.00)
 );
 
--- STEP 5: CREATE MAIN TOURIST PLACES TABLE
+-- STEP 5: CREATE MAIN TOURIST PLACES TABLE (CORE RECORDS REGISTER)
 --   Integrity rules enforced:
 --     1. FOREIGN KEY  → category_id must exist in categories1
 --     2. UNIQUE       → no duplicate place_name + city combination
@@ -106,12 +107,60 @@ CREATE TABLE tourist_places_audit_log (
     performed_at  TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
+-- STEP 7: CREATE ITINERARIES TABLE (TRIP PLANNER MASTER)
+--   Enforces:
+--     1. Positive duration (days >= 1)
+--     2. Non-negative estimated budget
+--     3. Valid difficulty level ('EASY', 'MODERATE', 'CHALLENGING')
+--     4. Active status flag
+CREATE TABLE itineraries (
+    itinerary_id        INT AUTO_INCREMENT PRIMARY KEY,
+    itinerary_name      VARCHAR(150)   NOT NULL UNIQUE,
+    theme               VARCHAR(50)    NOT NULL DEFAULT 'General',
+    duration_days       INT            NOT NULL DEFAULT 1,
+    estimated_budget    DECIMAL(10,2)  NOT NULL DEFAULT 0.00,
+    difficulty_level    VARCHAR(20)    NOT NULL DEFAULT 'EASY',
+    target_audience     VARCHAR(50)    DEFAULT 'Family / Friends',
+    status              VARCHAR(10)    NOT NULL DEFAULT 'ACTIVE',
+    created_at          TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
+    updated_at          TIMESTAMP      DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CHECK (duration_days >= 1),
+    CHECK (estimated_budget >= 0),
+    CHECK (difficulty_level IN ('EASY', 'MODERATE', 'CHALLENGING')),
+    CHECK (status IN ('ACTIVE', 'INACTIVE'))
+);
+
+-- STEP 8: CREATE ITINERARY_PLACES TABLE (ORDERED TRIP STOPS BRIDGE TABLE)
+--   Enforces:
+--     1. FOREIGN KEY to itineraries (ON DELETE CASCADE)
+--     2. FOREIGN KEY to tourist_places (ON DELETE RESTRICT - protects catalog places)
+--     3. UNIQUE (itinerary_id, day_number, stop_order) prevents ordering conflicts
+--     4. Positive planned stay hours
+CREATE TABLE itinerary_places (
+    itinerary_place_id  INT AUTO_INCREMENT PRIMARY KEY,
+    itinerary_id        INT            NOT NULL,
+    place_id            INT            NOT NULL,
+    day_number          INT            NOT NULL DEFAULT 1,
+    stop_order          INT            NOT NULL DEFAULT 1,
+    planned_stay_hours  DECIMAL(4,1)   NOT NULL DEFAULT 2.0,
+    travel_mode         VARCHAR(30)    DEFAULT 'CAR / CAB',
+    stop_notes          VARCHAR(255),
+    created_at          TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (itinerary_id) REFERENCES itineraries(itinerary_id) ON DELETE CASCADE,
+    FOREIGN KEY (place_id)     REFERENCES tourist_places(place_id)  ON DELETE RESTRICT,
+    CONSTRAINT uq_itinerary_stop UNIQUE (itinerary_id, day_number, stop_order),
+    CHECK (day_number >= 1),
+    CHECK (stop_order >= 1),
+    CHECK (planned_stay_hours > 0)
+);
+
 
 -- #######################################################################################
 -- PART 2: SEED DATA
 -- #######################################################################################
 
--- STEP 7: INSERT 6 CATEGORIES
+-- STEP 9: INSERT 6 MASTER CATEGORIES
 INSERT INTO categories1 (category_id, category_name) VALUES
 (1, 'Beach'),
 (2, 'Historical'),
@@ -120,14 +169,14 @@ INSERT INTO categories1 (category_id, category_name) VALUES
 (5, 'Wildlife'),
 (6, 'Hill Station');
 
--- STEP 8: INSERT DEFAULT RANKING WEIGHTS (Sum = 1.00)
+-- STEP 10: INSERT DEFAULT RANKING WEIGHTS (Sum = 1.00)
 INSERT INTO ranking_config
     (config_id, config_name, weight_rating, weight_popularity, weight_distance, weight_cost, weight_preference, is_active)
 VALUES
     (1, 'DEFAULT_4_FACTOR',  0.35, 0.25, 0.25, 0.15, 0.00, TRUE),
     (2, 'EXTENDED_5_FACTOR', 0.30, 0.20, 0.20, 0.15, 0.15, FALSE);
 
--- STEP 9: INSERT ALL 34 KARNATAKA TOURIST PLACES
+-- STEP 11: INSERT ALL 34 KARNATAKA TOURIST PLACES
 INSERT INTO tourist_places
     (place_id, place_name, city, state, category_id, entry_fee, distance_km, rating, popularity, description, best_time_to_visit, status)
 VALUES
@@ -165,6 +214,44 @@ VALUES
 (32, 'Panambur Beach',                 'Mangaluru',      'Karnataka', 1,   0.00, 330.0, 4.40, 87, 'Popular coastal beach known for clean shores, kite festivals, and water sports.',                'November to February (Winter)','ACTIVE'),
 (33, 'Tannirbhavi Beach',              'Mangaluru',      'Karnataka', 1,   0.00, 335.0, 4.50, 85, 'Tranquil beach with casuarina groves, ferry access, and sunset promenades.',                    'November to February (Winter)','ACTIVE'),
 (34, 'Kudremukh National Park',        'Chikkamagaluru', 'Karnataka', 6,  50.00, 310.0, 4.70, 91, 'Horse-face shaped peak known for rolling shola grasslands and bio-diverse valleys.',             'September to February',       'ACTIVE');
+
+-- STEP 12: INSERT CURATED TRAVEL ITINERARIES
+INSERT INTO itineraries
+    (itinerary_id, itinerary_name, theme, duration_days, estimated_budget, difficulty_level, target_audience, status)
+VALUES
+(1, 'North Karnataka Chalukya & UNESCO Heritage', 'Historical',  3, 3500.00, 'MODERATE',    'History & Architecture Lovers', 'ACTIVE'),
+(2, 'Western Ghats Waterfalls & Kali Adventure',  'Adventure',   2, 4200.00, 'CHALLENGING', 'Youth & Nature Trekkers',       'ACTIVE'),
+(3, 'Coastal Beach & Temple Pilgrimage Trail',    'Spiritual',   2, 2800.00, 'EASY',        'Families & Solo Travelers',     'ACTIVE'),
+(4, 'Hubballi-Dharwad Twin Cities Heritage Walk', 'City Tour',   1,  800.00, 'EASY',        'Students & Weekend Tourists',   'ACTIVE');
+
+-- STEP 13: INSERT ITINERARY STOPS (MAPPING TO TOURIST PLACES)
+INSERT INTO itinerary_places
+    (itinerary_id, place_id, day_number, stop_order, planned_stay_hours, travel_mode, stop_notes)
+VALUES
+-- Itinerary 1: North Karnataka Chalukya & UNESCO Heritage (3 Days)
+(1, 9,  1, 1, 3.0, 'CAR', 'Morning explore rock-cut Cave Temples overlooking Agastya lake.'),
+(1, 18, 1, 2, 2.5, 'CAR', 'Afternoon visit Rekha-Nagara UNESCO complex.'),
+(1, 19, 1, 3, 2.0, 'CAR', 'Evening sunset study of Durga Temple architecture in Aihole.'),
+(1, 8,  2, 1, 5.0, 'CAR', 'Full day Vijayanagara empire exploration at Virupaksha and Hampi ruins.'),
+(1, 20, 3, 1, 3.5, 'CAR', 'Morning tour of massive Whispering Gallery dome at Gol Gumbaz.'),
+
+-- Itinerary 2: Western Ghats Waterfalls & Adventure Trail (2 Days)
+(2, 11, 1, 1, 5.0, 'JEEP / CAB', 'Kali river white water rafting and morning jungle safari.'),
+(2, 15, 1, 2, 2.5, 'CAB',        'Picnic lunch and photography at Sathodi rectangular falls.'),
+(2, 16, 2, 1, 2.0, 'CAB',        'Morning view of Bedthi river cascading down two tiers.'),
+(2, 14, 2, 2, 3.5, 'TREK / CAB', 'Rainforest trek to giant crystalline limestone peaks.'),
+
+-- Itinerary 3: Coastal Beach & Temple Pilgrimage Trail (2 Days)
+(3, 17, 1, 1, 2.0, 'CAR', 'Morning darshan at 16th century wooden-carved Marikamba shrine.'),
+(3, 6,  1, 2, 3.5, 'CAR', 'Afternoon darshan of 123-foot Shiva statue overlooking Arabian Sea.'),
+(3, 5,  2, 1, 3.0, 'CAB', 'Morning beach walk along the iconic Om-shaped shoreline.'),
+(3, 13, 2, 2, 2.5, 'CAB', 'Relaxed beachside cafe sunset at Kudle cove.'),
+
+-- Itinerary 4: Hubballi-Dharwad Twin Cities Heritage Walk (1 Day)
+(4, 2,  1, 1, 1.5, 'AUTO / CAB', 'Morning darshan at 900-year-old carved black stone temple.'),
+(4, 1,  1, 2, 2.5, 'AUTO / CAB', 'Boating and lunch walk around Unkal Lake park.'),
+(4, 3,  1, 3, 2.0, 'AUTO / CAB', 'Panoramic sunset viewpoint over the twin cities at Nrupatunga Betta.'),
+(4, 4,  1, 4, 1.5, 'AUTO / CAB', 'Evening musical fountain at poet Da Ra Bendre park.');
 
 
 -- #######################################################################################
@@ -239,9 +326,35 @@ SELECT
 FROM tourist_places
 WHERE entry_fee <= 25.00 AND status = 'ACTIVE';
 
+-- VIEW 4: Itinerary Details View (Multi-Table Join: itineraries + stops + places)
+CREATE OR REPLACE VIEW vw_itinerary_details AS
+SELECT
+    i.itinerary_id,
+    i.itinerary_name,
+    i.theme,
+    i.duration_days,
+    i.estimated_budget,
+    i.difficulty_level,
+    ip.day_number,
+    ip.stop_order,
+    p.place_name,
+    p.city,
+    c.category_name,
+    p.entry_fee,
+    p.rating,
+    ip.planned_stay_hours,
+    ip.travel_mode,
+    ip.stop_notes
+FROM itineraries i
+JOIN itinerary_places ip ON i.itinerary_id = ip.itinerary_id
+JOIN tourist_places p    ON ip.place_id = p.place_id
+JOIN categories1 c       ON p.category_id = c.category_id
+WHERE i.status = 'ACTIVE' AND p.status = 'ACTIVE'
+ORDER BY i.itinerary_id, ip.day_number, ip.stop_order;
+
 
 -- #######################################################################################
--- PART 5: DQL QUERIES (Day 3 Tasks)
+-- PART 5: DQL QUERIES (Day 3 & Advanced Project Queries)
 -- #######################################################################################
 
 -- TASK 3.1: INNER JOIN — Show category NAME instead of category number
@@ -301,6 +414,37 @@ LIMIT 5;
 -- TASK 3.6: Verify budget-friendly view
 SELECT * FROM vw_budget_friendly_places;
 
+-- TASK 3.7 (NEW): ITINERARY DETAILS QUERY — Day-by-day plan for Itinerary 1
+SELECT
+    itinerary_name,
+    day_number,
+    stop_order,
+    place_name,
+    city,
+    category_name,
+    entry_fee,
+    planned_stay_hours,
+    travel_mode,
+    stop_notes
+FROM vw_itinerary_details
+WHERE itinerary_id = 1
+ORDER BY day_number, stop_order;
+
+-- TASK 3.8 (NEW): ITINERARY SUMMARY AGGREGATION — Total stops and total ticket cost per tour
+SELECT
+    i.itinerary_id,
+    i.itinerary_name,
+    i.duration_days,
+    COUNT(ip.place_id)          AS total_stops,
+    SUM(p.entry_fee)            AS total_entry_fees,
+    ROUND(AVG(p.rating), 2)     AS avg_destination_rating,
+    SUM(ip.planned_stay_hours)  AS total_sightseeing_hours
+FROM itineraries i
+JOIN itinerary_places ip ON i.itinerary_id = ip.itinerary_id
+JOIN tourist_places p    ON ip.place_id = p.place_id
+GROUP BY i.itinerary_id, i.itinerary_name, i.duration_days
+ORDER BY total_stops DESC;
+
 -- BONUS: Verify full catalog view
 SELECT * FROM vw_tourist_catalog;
 
@@ -312,7 +456,7 @@ SELECT * FROM ranking_config;
 
 -- =======================================================================================
 -- END OF MASTER SCRIPT
--- All 34 places loaded. All constraints, triggers, and views active.
+-- 6 Tables | 4 Views | 2 Triggers | 34 Places | 4 Itineraries Loaded
 -- GitHub: https://github.com/shri030306/Mini-Project-Engine01-
 -- Student: Shrilakshmi G.S | USN: 01FE24BCA314 | Engine 1 | Team 02
 -- =======================================================================================
