@@ -14,10 +14,11 @@ The **Tourist Place Search and Ranking System** is a multi-engine decision-suppo
 
 This repository hosts **Engine 1: Data and Integrity**, responsible for:
 - Core relational database architecture in MySQL 8.0 / InnoDB.
-- Complete verified dataset of **34 Karnataka tourist destinations** across 6 categories.
+- Complete verified statewide catalog of **100 Karnataka tourist destinations** across 6 categories.
 - Enforcing non-violable data integrity rules (CHECK constraints, unique keys, foreign keys).
 - Implementing an automated Audit Trail Register (`tourist_places_audit_log`) and triggers.
 - Managing dynamic ranking weights via the `ranking_config` table (weights guaranteed to sum to 1.00).
+- Curated multi-day trip itineraries (`itineraries` and `itinerary_places`) and reporting views.
 - Providing live database connection modules and exports for **Engine 2 (C++ / Node API)**.
 
 ---

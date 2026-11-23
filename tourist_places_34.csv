@@ -33,3 +33,69 @@ place_id,place_name,city,state,category_id,entry_fee,distance_km,rating,populari
 32,Panambur Beach,Mangaluru,Karnataka,1,0.0,330.0,4.4,87,"Popular coastal beach known for clean shores, kite festivals, and water sports.",November to February (Winter),ACTIVE
 33,Tannirbhavi Beach,Mangaluru,Karnataka,1,0.0,335.0,4.5,85,"Tranquil beach with casuarina groves, ferry access, and sunset promenades.",November to February (Winter),ACTIVE
 34,Kudremukh National Park,Chikkamagaluru,Karnataka,6,50.0,310.0,4.7,91,Horse-face shaped peak known for rolling shola grasslands and bio-diverse valleys.,September to February,ACTIVE
+35,Malpe Beach & Sea Walk,Udupi,Karnataka,1,0.0,290.0,4.6,90,"Scenic shoreline featuring sea walk promenade, water sports, and boat trips to basaltic St. Mary's Island.",October to March,ACTIVE
+36,St. Mary's Island,Malpe,Karnataka,1,300.0,292.0,4.7,92,Unique geological monument of columnar hexagonal basalt rock formations in Arabian Sea.,October to April,ACTIVE
+37,Maravanthe Beach Highway,Kundapura,Karnataka,1,0.0,245.0,4.6,88,Picturesque coastal highway with the Arabian Sea on one side and Souparnika River on the other.,October to March,ACTIVE
+38,Kaup Beach & Lighthouse,Udupi,Karnataka,1,20.0,300.0,4.5,86,Historic 1901 British lighthouse atop coastal rocks offering panoramic Arabian sea views.,October to March,ACTIVE
+39,Devbagh Beach,Karwar,Karnataka,1,50.0,165.0,4.5,84,"Secluded private beach with casuarina groves, dolphin boat cruises, and snorkeling.",October to April,ACTIVE
+40,Someshwar Beach & Rudra Shila,Mangaluru,Karnataka,1,0.0,340.0,4.4,83,Hidden rocky beach famous for colossal natural black rocks known as Rudra Shila.,October to March,ACTIVE
+41,Half Moon Beach,Gokarna,Karnataka,1,0.0,153.0,4.5,85,Crescent-shaped cliff-side beach accessible only via trekking or scenic boat ride.,November to February,ACTIVE
+42,Rabindranath Tagore Beach,Karwar,Karnataka,1,0.0,160.0,4.4,82,"Wide city beach featuring INS Chapal warship museum, musical fountain, and promenade.",October to March,ACTIVE
+43,Bidar Fort & Solah Khamba,Bidar,Karnataka,2,25.0,380.0,4.7,89,"Magnificent Bahmani fortress with triple moat system, Mahmud Gawan Madrasa, and royal palaces.",October to March,ACTIVE
+44,Gulbarga Fort & Great Mosque,Kalaburagi,Karnataka,2,20.0,310.0,4.5,82,Ancient 14th-century fortress featuring Persian-style roofed Jami Masjid and royal citadel.,October to March,ACTIVE
+45,Kittur Chennamma Fort & Palace,Belagavi,Karnataka,2,15.0,55.0,4.4,80,Historical citadel of Queen Rani Chennamma who led the 1824 armed rebellion against British rule.,October to March,ACTIVE
+46,Srirangapatna Dariya Daulat Palace,Mandya,Karnataka,2,25.0,395.0,4.7,92,Teakwood summer palace of Tipu Sultan adorned with intricate murals and battle frescoes.,Year Round,ACTIVE
+47,Bangalore Palace,Bengaluru,Karnataka,2,250.0,410.0,4.5,93,"Tudor-style royal estate with fortified towers, stained glass, and historic wood carvings.",Year Round,ACTIVE
+48,Tipu Sultan Summer Palace,Bengaluru,Karnataka,2,20.0,414.0,4.4,86,"Two-storey ornate wooden palace built with teak pillars, arches, and balconies in old city.",Year Round,ACTIVE
+49,Mirjan Fort,Kumta,Karnataka,2,0.0,148.0,4.6,87,16th-century laterite stone fortress built by Pepper Queen Rani Chennabhairadevi amidst rivers.,October to March,ACTIVE
+50,Madikeri Fort & Palace,Madikeri,Karnataka,2,20.0,362.0,4.4,85,"Elevated fort rebuilt by Tipu Sultan with stone elephants, clock tower, and museum.",July to March,ACTIVE
+51,Kavaledurga Fort,Thirthahalli,Karnataka,2,0.0,195.0,4.6,84,Ancient misty hill fort built by Keladi Nayakas with nine defence gates amidst rainforest.,October to February,ACTIVE
+52,Basavakalyan Fort,Bidar,Karnataka,2,20.0,350.0,4.5,81,Historic capital of Western Chalukyas and birthplace of 12th-century Sharana movement.,October to March,ACTIVE
+53,Melukote Cheluvanarayana Temple & Kalyani,Mandya,Karnataka,2,0.0,375.0,4.7,88,"Ancient hill town with Hoysala shrines, sacred stepped water tanks, and Sanskrit academy.",September to March,ACTIVE
+54,Talakadu Sand Dunes & Temples,Mysuru,Karnataka,2,0.0,435.0,4.5,85,Historic township on Kaveri banks where ancient stone temples are buried under deep sand dunes.,October to March,ACTIVE
+55,Ibrahim Rauza Mausoleum,Vijayapura,Karnataka,2,25.0,198.0,4.7,88,Twin-domed palatial tomb often hailed as the Taj Mahal of the Deccan for its symmetry.,October to March,ACTIVE
+56,Bellary Rock Fort,Ballari,Karnataka,2,20.0,210.0,4.4,80,Imposing monolithic granite hill fort fortified by Vijayanagara kings and later by Haider Ali.,October to March,ACTIVE
+57,Somnathpur Keshava Temple,Mysuru,Karnataka,2,25.0,430.0,4.8,91,Trikuta 13th-century Hoysala masterpiece covered in outer wall reliefs and ceiling stars.,October to March,ACTIVE
+58,Shivanasamudra Gaganachukki Falls,Mandya,Karnataka,3,20.0,440.0,4.7,94,Twin torrential waterfalls where the Kaveri river splits across rocky ravines.,July to October (Monsoon),ACTIVE
+59,Shivanasamudra Barachukki Falls,Chamarajanagar,Karnataka,3,20.0,442.0,4.6,92,Wide cascading segment of the Kaveri river with coracle rides and mist viewpoints.,July to October (Monsoon),ACTIVE
+60,Hebbe Falls,Chikkamagaluru,Karnataka,3,50.0,260.0,4.6,89,Two-stage mountain waterfall inside private coffee estates reached by rugged 4x4 jeep trails.,August to January,ACTIVE
+61,Iruppu Falls,Kodagu,Karnataka,3,50.0,385.0,4.6,90,Sacred Lakshmana Tirtha river waterfall dropping down Brahmagiri forest cliffs.,July to December,ACTIVE
+62,Gokak Falls,Belagavi,Karnataka,3,20.0,145.0,4.5,87,Horse-shoe shaped gorge waterfall on Ghataprabha river featuring a century-old suspension bridge.,July to October (Monsoon),ACTIVE
+63,Vibhooti Falls,Ankola,Karnataka,3,30.0,135.0,4.7,91,Limestone forest waterfall with turquoise plunge pools perfect for natural swimming.,September to March,ACTIVE
+64,Kalhatti Falls,Chikkamagaluru,Karnataka,3,0.0,255.0,4.4,82,Waterfall cascading over ancient Veerabhadra temple caves surrounded by lush cardamom hills.,July to November,ACTIVE
+65,Unchalli Falls,Sirsi,Karnataka,3,20.0,125.0,4.6,86,116-meter roaring plunge waterfall on Aghanashini river also called Lushington Falls.,July to December,ACTIVE
+66,Chunchi Falls,Ramanagara,Karnataka,3,30.0,460.0,4.3,81,Terraced rocky gorge waterfall along Arkavathi river ideal for day trekking.,August to November,ACTIVE
+67,Mekedatu & Sangama Gorge,Ramanagara,Karnataka,3,20.0,470.0,4.5,88,Deep narrow granite chasm where Kaveri and Arkavathi rivers converge fiercely.,September to February,ACTIVE
+68,Balmuri & Edmuri Falls,Mysuru,Karnataka,3,20.0,405.0,4.3,82,Gentle check-dam waterfall steps popular for wading and picnic film shoots.,Year Round,ACTIVE
+69,Godchinamalaki Falls,Belagavi,Karnataka,3,10.0,150.0,4.4,80,Picturesque step-wise waterfall on Markandeya river nestled within a green valley.,July to October (Monsoon),ACTIVE
+70,Cubbon Park,Bengaluru,Karnataka,3,0.0,410.0,4.6,94,Historic 300-acre green lung in central Bengaluru with century-old trees and colonial statues.,Year Round,ACTIVE
+71,Karanji Lake & Butterfly Park,Mysuru,Karnataka,3,50.0,412.0,4.5,87,"Scenic urban wetland with India's largest walk-through aviary, butterfly park, and boating.",Year Round,ACTIVE
+72,Brindavan Gardens,Mandya,Karnataka,3,50.0,398.0,4.6,95,Terraced symmetrical Mughal-style garden at the base of KRS Dam with musical fountains.,Year Round,ACTIVE
+73,Bheemeshwari Cauvery River Camp,Mandya,Karnataka,3,100.0,450.0,4.5,85,"Riparian forest banks known for nature walks, coracle rides, and Mahseer fish conservation.",August to February,ACTIVE
+74,Udupi Sri Krishna Matha,Udupi,Karnataka,4,0.0,295.0,4.8,96,Renowned 13th-century Dvaita monastery founded by Saint Madhvacharya with Kanakana Kindi window.,Year Round,ACTIVE
+75,Dharmasthala Manjunatha Temple,Dharmasthala,Karnataka,4,0.0,310.0,4.8,97,Renowned Shaiva shrine administered by Jain Pergade family famous for Annadana free meals.,Year Round,ACTIVE
+76,Kukke Subramanya Temple,Subrahmanya,Karnataka,4,0.0,345.0,4.8,96,Spiritual pilgrimage site nestled under Kumara Parvatha famous for Sarpa Samskara rituals.,Year Round,ACTIVE
+77,Sringeri Sharada Peetham,Chikkamagaluru,Karnataka,4,0.0,250.0,4.9,96,First of four cardinal Advaita mathas established by Adi Shankaracharya on Tunga river.,Year Round,ACTIVE
+78,Kollur Mookambika Temple,Udupi,Karnataka,4,0.0,230.0,4.8,94,Ancient Shakta pilgrimage shrine located in the foothills of Kodachadri hill.,Year Round,ACTIVE
+79,Horanadu Annapoorneshwari Temple,Chikkamagaluru,Karnataka,4,0.0,265.0,4.8,93,Sacred deity of nourishment seated in a lush valley along Bhadra river with free meals.,Year Round,ACTIVE
+80,Chamundeshwari Temple,Mysuru,Karnataka,4,0.0,420.0,4.8,97,Dravidian hill temple dedicated to guardian deity of Mysuru atop Chamundi Hill.,Year Round,ACTIVE
+81,Kateel Durgaparameshwari Temple,Mangaluru,Karnataka,4,0.0,325.0,4.7,90,Island temple in the middle of Nandini river surrounded by scenic western ghat streams.,Year Round,ACTIVE
+82,Kudalasangama Sangameshwara Temple,Bagalkote,Karnataka,4,0.0,130.0,4.7,89,Sacred confluence of Krishna and Malaprabha rivers where philosopher Basavanna attained Samadhi.,October to March,ACTIVE
+83,Savadatti Renuka Yellamma Temple,Belagavi,Karnataka,4,0.0,78.0,4.6,91,Historic hilltop shrine drawing millions of pilgrims for annual Banada Hunnime fairs.,October to March,ACTIVE
+84,Banavasi Madhukeshwara Temple,Uttara Kannada,Karnataka,4,0.0,115.0,4.7,86,Ancient capital of Kadamba dynasty featuring intricate carved stone couch and Nritya Mantapa.,October to March,ACTIVE
+85,Siddaroodha Math,Hubballi,Karnataka,4,0.0,4.0,4.7,91,Prominent spiritual monastery and samadhi of 19th-century saint Swami Siddharoodha.,Year Round,ACTIVE
+86,Ranganathittu Bird Sanctuary,Srirangapatna,Karnataka,5,100.0,395.0,4.7,93,"Kaveri river islet sanctuary hosting painted storks, spoonbills, and marsh crocodiles on boat tours.",November to June,ACTIVE
+87,Dubare Elephant Camp,Kodagu,Karnataka,5,150.0,365.0,4.5,92,"Kaveri river elephant interaction center offering bathing, feeding, and coracle boating.",September to March,ACTIVE
+88,Kali Tiger Reserve,Dandeli,Karnataka,5,300.0,85.0,4.7,91,"Dense evergreen reserve home to black panthers, hornbills, and Kali river ecosystems.",October to May,ACTIVE
+89,Bhadra Wildlife Sanctuary,Chikkamagaluru,Karnataka,5,350.0,210.0,4.6,89,Project Tiger sanctuary surrounded by Mullayanagiri and Bababudan hill ranges on Bhadra reservoir.,October to March,ACTIVE
+90,Daroji Sloth Bear Sanctuary,Ballari,Karnataka,5,50.0,170.0,4.5,85,Specialized rocky sanctuary near Hampi providing open watchtower views of wild sloth bears.,October to March,ACTIVE
+91,Tyavarekoppa Lion & Tiger Safari,Shivamogga,Karnataka,5,100.0,165.0,4.4,84,"Enclosed forest safari park housing lions, tigers, leopards, and zoo aviary.",Year Round,ACTIVE
+92,Someshwara Wildlife Sanctuary,Udupi,Karnataka,5,50.0,275.0,4.5,82,"Pristine Western Ghats evergreen forest rich in king cobras, barking deer, and endemic birds.",October to April,ACTIVE
+93,Magadi Bird Sanctuary,Gadag,Karnataka,5,20.0,58.0,4.5,84,Protected wetland lake serving as major wintering ground for bar-headed geese from Mongolia.,November to February,ACTIVE
+94,Kemmangundi Hill Station,Chikkamagaluru,Karnataka,6,20.0,255.0,4.6,91,Picturesque hill retreat once favoured by Mysore Maharaja with Z-point cliff trails and rose gardens.,September to March,ACTIVE
+95,Nandi Hills,Chikkaballapur,Karnataka,6,30.0,435.0,4.6,96,"Popular sunrise fortress hill with Tipu Drop, ancient Bhoga Nandeeshwara temple, and misty summits.",Year Round,ACTIVE
+96,Baba Budangiri Peak,Chikkamagaluru,Karnataka,6,0.0,270.0,4.6,90,"Historic crescent mountain range where coffee was first planted in India, with Dattatreya shrine.",September to March,ACTIVE
+97,Kodachadri Peak,Shivamogga,Karnataka,6,0.0,215.0,4.8,93,Natural heritage peak overlooking thick Ghats rainforest with ancient Sarvajna Peetha.,October to March,ACTIVE
+98,Tadiandamol Peak,Kodagu,Karnataka,6,20.0,380.0,4.7,91,Highest mountain peak in Kodagu with scenic shola grassland hiking trails.,October to March,ACTIVE
+99,Biligiriranga Hills (BR Hills),Chamarajanagar,Karnataka,6,0.0,475.0,4.5,88,Ecological bridge between Western and Eastern Ghats with Biligiriranganatha swamy temple.,October to May,ACTIVE
+100,Skandagiri Sunrise Trek,Chikkaballapur,Karnataka,6,250.0,440.0,4.6,92,Night trek destination famous for walking above clouds at sunrise over ruined hill fort.,Year Round,ACTIVE
